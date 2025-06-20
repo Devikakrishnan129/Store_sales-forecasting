@@ -1,0 +1,400 @@
+/* app/globals.css */
+
+/* Global styles and a modern reset */
+:root {
+  --primary-color: #4a90e2; /* A nice blue */
+  --secondary-color: #50e3c2; /* A complementary green */
+  --text-color-dark: #333333;
+  --text-color-light: #555555;
+  --background-light: #f4f7f6;
+  --background-card: #ffffff;
+  --border-color: #e0e0e0;
+  --shadow-light: rgba(0, 0, 0, 0.05);
+  --shadow-medium: rgba(0, 0, 0, 0.1);
+  --error-color: #e74c3c;
+  --success-color: #2ecc71;
+
+  /* Re-introducing general card styling for glass-form-container in light theme context */
+  --card-padding: 30px;
+  --card-border-radius: 12px;
+  --card-box-shadow: 0 10px 30px var(--shadow-light);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+  background-color: var(--background-light);
+  color: var(--text-color-dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Added for central alignment of content */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensure body takes full viewport height */
+  overflow-y: auto; /* Allow scrolling if content is taller than viewport */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  color: var(--text-color-dark);
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+/* Basic form element reset and styling */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  color: var(--text-color-dark);
+  background-color: var(--background-card);
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  outline: none; /* Remove default focus outline */
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2); /* A light blue glow */
+}
+
+input[type="checkbox"] {
+  width: auto; /* Override 100% width for checkboxes */
+  margin-right: 8px;
+  transform: scale(1.2); /* Make checkbox slightly larger */
+  accent-color: var(--primary-color); /* Added to style the checkbox itself */
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 0 4px 10px var(--shadow-light);
+  outline: none;
+}
+
+button:hover:not(:disabled) {
+  background-color: #3b7acd; /* Slightly darker primary color */
+  transform: translateY(-2px); /* Slight lift effect */
+  box-shadow: 0 6px 12px var(--shadow-medium);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0); /* Return to original position */
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.container {
+  max-width: 600px;
+  margin: 60px auto; /* Margin remains, but body flex will also center */
+  padding: 30px;
+  background-color: var(--background-card);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px var(--shadow-light); /* More pronounced shadow */
+  transition: transform 0.3s ease-in-out;
+}
+
+.container:hover {
+  transform: translateY(-5px); /* Subtle lift on hover */
+}
+
+.heading {
+  text-align: center;
+  color: var(--primary-color); /* Use primary color for heading */
+  margin-bottom: 40px;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Increased gap for better spacing */
+  align-items: flex-start; /* Ensures all form elements start at the same left edge */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Ensure form groups take full width within the form */
+}
+
+.form-group-checkbox {
+  display: flex;
+  align-items: center; /* Vertically align label and checkbox */
+  gap: 10px; /* Space between checkbox and label */
+}
+
+label {
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-color-light);
+  font-size: 1rem;
+  text-align: left; /* Explicitly align label text to the left */
+}
+
+/* Specific styling for the prediction result and error messages */
+.message-container {
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  text-align: center;
+  box-shadow: 0 4px 10px var(--shadow-light);
+}
+
+.error-message {
+  background-color: #ffe6e6; /* Light red */
+  color: var(--error-color);
+  border: 1px solid var(--error-color);
+}
+
+.success-message {
+  background-color: #e6ffe6; /* Light green */
+  color: var(--success-color);
+  border: 1px solid var(--success-color);
+}
+
+.result-heading {
+  color: var(--success-color);
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.result-text {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--text-color-dark);
+}
+
+.result-message {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--text-color-light);
+  margin-top: 10px;
+}
+
+/* --- New / Extended Styles for Home, Login, Register Pages --- */
+
+/* Re-purposing glass-form-container for general card styling */
+.glass-form-container {
+    padding: var(--card-padding);
+    background-color: var(--background-card);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--card-box-shadow);
+    transition: transform 0.3s ease-in-out;
+    max-width: 650px; /* Slightly wider than default container */
+    width: 90%; /* Responsive width */
+    margin: auto; /* Center it within its parent */
+}
+
+.glass-form-container:hover {
+    transform: translateY(-5px); /* Consistent lift on hover */
+}
+
+/* Home Page specific adjustments */
+.home-page-card {
+  text-align: center;
+  max-width: 700px; /* Wider card for home page */
+  padding: 50px; /* More padding for home page card */
+}
+
+.home-page-card .heading {
+  margin-bottom: 25px;
+}
+
+.home-description {
+  font-size: 1.15rem;
+  color: var(--text-color-dark);
+  margin-bottom: 40px;
+}
+
+.home-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.home-button {
+  display: inline-block;
+  padding: 14px 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: 1px solid var(--primary-color); /* Added border for consistency */
+  border-radius: 10px; /* Slightly more rounded */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+  background-color: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 4px 15px var(--shadow-light);
+  outline: none;
+  letter-spacing: 0.5px;
+}
+
+.home-button:hover {
+  background-color: #3b7acd; /* Darker blue on hover */
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px var(--shadow-medium);
+}
+
+.home-button.secondary {
+  background-color: var(--background-card);
+  border: 1px solid var(--border-color);
+  color: var(--primary-color); /* Primary color for text on secondary button */
+}
+
+.home-button.secondary:hover {
+  background-color: var(--background-light); /* Lighter background on hover */
+  border-color: var(--primary-color);
+}
+
+/* Authentication Page specific styles (Login/Register) */
+.separator {
+  text-align: center;
+  margin: 25px 0;
+  color: var(--text-color-light);
+  font-weight: 500;
+  position: relative;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: var(--border-color); /* Using existing border color */
+}
+
+.separator::before {
+  left: 0;
+}
+
+.separator::after {
+  right: 0;
+}
+
+/* Google button is removed from JS, but keeping style hidden in CSS */
+.google-button {
+  display: none; /* Hide the button */
+}
+
+.auth-link-text {
+  text-align: center;
+  margin-top: 25px;
+  color: var(--text-color-light);
+}
+
+.auth-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.auth-link:hover {
+  color: var(--text-color-dark); /* Darker text on hover for contrast */
+}
+
+/* User info and Logout button on Prediction page */
+.user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-color-dark); /* Text color for user info */
+    font-size: 1.1rem;
+}
+
+.logout-button {
+    background-color: var(--error-color); /* Red for logout */
+    color: white;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    box-shadow: none; /* No extra shadow for small button */
+    border-radius: 5px; /* Smaller border-radius for compact button */
+}
+
+.logout-button:hover {
+    background-color: #c0392b; /* Darker red */
+    transform: none; /* No lift effect for small button */
+    box-shadow: none;
+}
+
+/* General loading page styling (if `AuthContext` is still determining user) */
+.loading-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh; /* Take full height to center content */
+  font-size: 1.5rem;
+  color: var(--text-color-dark);
+}
+.loading-page .heading {
+  color: var(--primary-color);
+}
+.loading-page p {
+  color: var(--text-color-light);
+}
+
+
+/* Ensure responsiveness for smaller screens */
+@media (max-width: 768px) {
+  .glass-form-container {
+    padding: 20px; /* Reduced padding for smaller screens */
+    width: 95%; /* Wider on small screens */
+  }
+
+  .heading {
+    font-size: 1.8rem; /* Smaller heading on small screens */
+  }
+
+  .home-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .home-button {
+    width: 100%;
+  }
+
+  .separator::before,
+  .separator::after {
+    width: 30%; /* Adjust for smaller screens */
+  }
+}
